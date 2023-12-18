@@ -56,38 +56,44 @@ const priceNum =parseFloat(price)
 
   return (
    
-    <div className="cart-details-container">
+    <div className="">
+ <div className="cart-details-container">
+  <div className="flex w-60"> 
 
-      <div className="cart-inc-and-dec-container">
-            <div className="cart-inc-and-dec">
-              <button onClick={decrementItem}>
-                <MinusOutlined size={50} />
-              </button>
-              <h2>{cartProductCount(id)}</h2>
-              <button onClick={incrementItem}>
-                <PlusOutlined size={50} />
-              </button>
-            </div>
-        </div>
-      <Image
-        className="cart-image"
-        src={images[0]}
-        alt="product image"
-        width={220}
-        height={150}
-      />
-      <div className="cart-details">
-        <h3>{name}</h3>
-        <strong>${price}</strong>
-        
-      </div>
-      <div className="item-amount">
+  <div className="cart-inc-and-dec-container">
+       
+       <div className="cart-inc-and-dec">
+         <button onClick={decrementItem}>
+           <MinusOutlined size={50} />
+         </button>
+         <h2>{cartProductCount(id)}</h2>
+         <button onClick={incrementItem}>
+           <PlusOutlined size={50} />
+         </button>
+       </div>
+   </div>
+ <Image
+   className="cart-image"
+   src={images[0]}
+   alt="product image"
+   width={220}
+   height={150}
+ />
+ <div className="cart-details">
+   <h3>{name}</h3>
+   <strong>${price}</strong>
+   
+ </div>
+  </div>
+     
+      <div className="flex items-center">  <div className="item-amount">
         <strong>${itemTotal}</strong>
       </div>
-      <button onClick={()=> dispatch(removeFromCart({id}))} className="close-cart pl-2">
+      <button onClick={()=> dispatch(removeFromCart({id}))} className="close-cart p-2">
         <span><CloseOutlined size={200}/></span>
-      </button> 
+      </button> </div>
+     
     </div>
-   
+    </div>
   );
 };

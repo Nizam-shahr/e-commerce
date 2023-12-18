@@ -4,7 +4,6 @@ import Banner from "./Banner";
 import Items from "./Items";
 import Carts from "./Carts";
 import SidePopUp from "./SidePopUp";
-import Delivery from "./delivery/DeliveryAddress";
 import Radio from "./Radio";
 import DeliveryAddress from "./delivery/DeliveryAddress";
 import Register from "./Register";
@@ -16,7 +15,6 @@ export {
   Banner,
   Items,
   Carts,
-  Delivery,
   Radio,
   Register,
   DeliveryAddress,

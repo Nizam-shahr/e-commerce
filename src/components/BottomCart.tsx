@@ -4,8 +4,9 @@ import SidePopUp from './SidePopUp';
 import { ShoppingCartOutlined  } from '@ant-design/icons';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';
+import BottomPopup from '@/components/BottomPopup'
 
-const CartButton = () => {
+const BottomCart = () => {
 
   const [showPopup, setShowPopup] = useState<boolean>(false);
   const showDrawer = () => {
@@ -21,14 +22,14 @@ const CartButton = () => {
 
   return (
     <div >
-      <div className='showPopup'>
-    <button  onClick={showDrawer}>
+      <div onClick={showDrawer} className='showPopups'>
+    <button className='flex items-center'  >
     <span className='cart-icon'><ShoppingCartOutlined /></span>
       <h2>{Cart.length} Items</h2>
     </button>
     <h2 className='cart-total'>${cartTotal}.00</h2>
     </div>
-    <SidePopUp 
+    <BottomPopup
       showPopUp ={showPopup}
       onClose= {() => setShowPopup(false)}
     />
@@ -36,4 +37,4 @@ const CartButton = () => {
   )
 }
 
-export default CartButton
+export default BottomCart

@@ -1,4 +1,4 @@
-import { AiOutlineSearch } from 'react-icons/ai';
+import { AiOutlineQuestionCircle, AiOutlineSearch } from 'react-icons/ai';
 import { Register } from '.';
 import React, { useEffect, useState } from "react";
 import { useSearch } from './context/SearchContext';
@@ -8,6 +8,8 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import Modal from 'react-modal';
 import Image from 'next/image';
 import SignIn from './SignIn';
+import Dropdowns from './DropDwon';
+import Hamburger from './Hamburger';
 type Props = {
   // Other props
 };
@@ -90,6 +92,16 @@ const Header = ({ /* Other props */ }: Props) => {
   const showSearchbar = router.pathname === "/";
   return (
     <div className="header-container">
+      <div className='sm-screen'> <Hamburger 
+      loggedIn = {loggedIn}
+      setIsLogoutOpen = {setIsLogoutOpen}
+      setIsModalOpen= {setIsModalOpen}
+      />
+      <div className="header-name">
+        <h1 onClick={() => router.push('/')} className="cursor-pointer " >ITEM STORE</h1>
+      </div>
+      </div>
+     <div className='large-screen'>
       <div className="header-name">
         <h1 onClick={() => router.push('/')} className="cursor-pointer " >ITEM STORE</h1>
       </div>
@@ -103,6 +115,7 @@ const Header = ({ /* Other props */ }: Props) => {
           <AiOutlineSearch size={30} />
         </span>
         <input
+        className='header-input w-full '
           type="text"
           id=""
           placeholder="search your item here"
@@ -111,18 +124,19 @@ const Header = ({ /* Other props */ }: Props) => {
       </form>
       <div className='nav-items'>
         <button>Offer</button>
-        <button  className="cursor-pointer hover:caret-orange-100" onClick={() => router.push('/need-help')}>Need Help</button>
+        <button  className="cursor-pointer flex align-center hover:caret-orange-100" onClick={() => router.push('/need-help')}> <AiOutlineQuestionCircle/>  Need Help</button>
 
         <div>
             {" "}
             {loggedIn ? (
               <div>
-              <button onClick={()=> setIsLogoutOpen(true)} className="logoutContainer">
+              {/* <button onClick={()=> setIsLogoutOpen(true)} className="logoutContainer">
                 <Image src='/user.png' width={30} height={30} alt= '' />
-              </button>
+              </button> */}
+              <Dropdowns setIsLogoutOpen = {setIsLogoutOpen}/>
               </div>
             ) : (
-              <button className="SignIn" onClick={() => setIsModalOpen(true)}>
+              <button className="SignIn bg-slate-50 rounded-lg hover:bg-yellow-500 py-2 px-4 " onClick={() => setIsModalOpen(true)}>
                 Sign in
               </button>
             )}
@@ -168,7 +182,7 @@ const Header = ({ /* Other props */ }: Props) => {
               </button>
             </Modal>
           </div>
-      </div>
+      </div></div>
     </div>
   );
 };

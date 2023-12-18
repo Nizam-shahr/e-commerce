@@ -4,7 +4,7 @@ function Spinner() {
         <img
           width={50}
           className='text-center mx-auto'
-          src='/spinner.gif'
+          src='/my-spinner.gif'
           alt='Loading...'
         />
       </div>

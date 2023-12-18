@@ -4,9 +4,6 @@ import { ProductTypes } from '@/types';
 import React, {useState} from 'react'
 import { AiOutlinePlus } from 'react-icons/ai';
 import { useSelector } from 'react-redux';
-import { DeliveryAddress } from '@/components';
-import { types } from 'util';
-import { Radio } from '@/components';
 import Delivery from '@/components/delivery/Delivery';
 import Contact from '@/components/contacts/Contacts';
 import {DeliverySchedule} from '@/components';
@@ -16,7 +13,12 @@ function checkout() {
    
   const Cart = useSelector((state: RootState) => state.cart.cart);
  
-
+  const cartTotal = Cart.reduce(
+    (total, item: any) => (total += item.price * item.count),
+    0
+  );
+  const deliveryFee = 200;
+  const orderTotal = cartTotal + deliveryFee;
   return (
     <div className='checkout-container'>
       <div className='checkout-left'>
@@ -32,7 +34,21 @@ function checkout() {
                 {Cart.length === 0 ? <Empty/> : Cart.map((item) => (
                         <CheckoutCard item={item}/>
                     ))}
-                </div>           
+                </div>  
+                <div className='py-8 flex gap-4 flex-col'>
+                <div className='border '></div>
+                  <div className='flex justify-between'>
+                  <h2>subtotal</h2>
+                      <h2>${cartTotal}.00</h2>
+                      </div>
+                      <div className='flex justify-between'> <h2>Delivery Fee</h2>
+                            <h2>${deliveryFee}.00</h2>
+                       </div>
+                       <div className='flex justify-between'> <h2>Order Total</h2>
+                            <h2>${orderTotal}.00</h2>
+                       </div>
+                       
+                </div>         
       </div>
     </div>
   )

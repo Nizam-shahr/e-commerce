@@ -6,6 +6,9 @@ import { products } from '@/components/Products';
 import {useState} from 'react'
 import { DataProps, FilterProps, ProductTypes } from '@/types';
 import { useSearch } from '../components/context/SearchContext';
+import Hamburger from '@/components/Hamburger';
+import Filter from '@/components/Filter';
+import BottomCart from '@/components/BottomCart';
 
 const Home: React.FC = () => {
   const { searchProductByName, setSearchProductByName } = useSearch();
@@ -30,8 +33,13 @@ const Home: React.FC = () => {
         
   return (
     <div>
-      <CartButton />
+      <CartButton  />
+     <BottomCart/>
       <div className="main-container">
+      <div className='item-selector-containers'>
+        <h2 className='text-2xl'>Category Selected</h2>
+        <Filter onFilteredProducts={onFilteredProducts} />
+        </div>
         <div className="item-selector-container">
           <ItemSelector onFilteredProducts={onFilteredProducts} />
         </div>

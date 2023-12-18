@@ -39,9 +39,10 @@ const App: React.FC<{ showPopUp: boolean; onClose: any }> = ({
         </Button>
       </Space> */}
       <Drawer
-  
+      placement="bottom"
+   
         title={
-          <div className="flex justify-between items-center">
+          <div className="flex  justify-between items-center">
             <ShoppingOutlined className="h-7 text-primary text-yellow-500 font-bold" />
 
 

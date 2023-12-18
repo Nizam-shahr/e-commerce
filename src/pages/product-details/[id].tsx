@@ -103,13 +103,13 @@ function Dynamicpage() {
             <div>
               <p>{product?.detail}</p>
             </div>
-            <div className="inc-and-dec-container w-64">
+            <div className="inc-and-dec-container w-64 hover:bg-yellow-300 hover:bg-yellow-300 hover:text-white trasition-all">
               {!item ? (
-                <button className="add-to-cart  " onClick={addItemToBasket}>
+                <button className="add-to-cart h-12  " onClick={addItemToBasket}>
                   Add To Cart
                 </button>
               ) : (
-                <div className="inc-and-dec">
+                <div className="inc-and-dec h-12 ">
                   <button onClick={decrementItem}>
                     <MinusOutlined size={50} />
                   </button>
@@ -124,7 +124,7 @@ function Dynamicpage() {
         </div>
       </div>
       <h1 className="text-4xl p-10 pl-16">Related Items</h1>
-      <div className="pro">
+      <div className="pro ">
         {foundProduct.map((product: any) => (
           <DynamicpageCard product={product} key={product.id} />
         ))}
@@ -196,11 +196,17 @@ const DynamicpageCard = ({
           <strong>${price}</strong>
           <div className="inc-and-dec-container">
             {!productz ? (
-              <button className="add-to-cart" onClick={addItemToBasket}>
-                Add To Cart
-              </button>
+              <button className="flex items-center w-full overflow-hidden duration-75 ease-in-out bg-gray-100 border-0 border-green-700 rounded cursor-pointer group focus:border-none h-9 hover:bg-yellow-300 hover:text-white trasition-all">
+              <p className="flex-grow text-xs">Add</p>
+              <span
+                // onClick={() => cartObject()}
+                className="flex items-center px-2 transition-all duration-75 ease-in-out bg-gray-200 h-9 hover:text-white group-hover:bg-yellow-200"
+              >
+                {/* <PlusIcon className='h-5' /> */} +
+              </span>
+            </button>
             ) : (
-              <div className="inc-and-dec">
+              <div className="inc-and-dec h-9">
                 <button onClick={decrementItem}>
                   <MinusOutlined size={50} />
                 </button>

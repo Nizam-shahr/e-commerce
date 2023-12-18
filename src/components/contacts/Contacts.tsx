@@ -8,13 +8,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { db } from "../../../firebase";
 import { getAuth, onAuthStateChanged, updateProfile } from "firebase/auth";
 
-type Contact = {
-  id: string;
-  type: string;
-  address: string;
-};
 
-function Delivery() {
+function Contacts() {
   const modalStyle = {
     overlay: {
       backgroundColor: "rgba(0, 0, 0, 0.6)",
@@ -209,4 +204,4 @@ function Delivery() {
   );
 }
 
-export default Delivery;
+export default Contacts;

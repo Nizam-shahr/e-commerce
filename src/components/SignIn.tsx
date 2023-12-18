@@ -5,6 +5,7 @@ import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import Register from './Register';
+import Spinner from './Spinner';
 // import Spinner from './Spinner';
 
 type SignInProps = {
@@ -21,7 +22,7 @@ type FormData = {
 
 const SignIn: React.FC<SignInProps> = ({ setIsModalOpen, loggedIn, handleSignUp, isModalOpen }) => {
   const [showPassword, setShowPassword] = useState(false);
-  const [text, setText] = useState('Sign In');
+  const [text, setText] = useState<any>('Sign In');
   const [formData, setFormData] = useState<FormData>({
     email: '',
     password: '',
@@ -68,7 +69,7 @@ const SignIn: React.FC<SignInProps> = ({ setIsModalOpen, loggedIn, handleSignUp,
 
   const handleText = () => {
     if (!loggedIn) {
-      setText(() => (''));
+      setText(() => <Spinner/>)
     }
   };
 
